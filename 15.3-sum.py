@@ -3,7 +3,6 @@
 #
 # [15] 3Sum
 #
-[-4, -1, -1, 0, 1, 2]
 from collections import defaultdict
 from typing import List
 # @lc code=start

@@ -5,6 +5,9 @@
 #
 
 # @lc code=start
+from typing import List
+
+
 class Solution:
     def nextGreaterElements(self, nums: List[int]) -> List[int]:
         stack = []
@@ -28,6 +31,28 @@ class Solution:
                     res[i] = stack[-1]
             i -= 1
         res = [val if val != float('-inf') else -1 for val in res]
-        return res
+        
+
+        n = len(nums)
+        result = [float('-inf')] * n
+        stk = []
+
+        for i in range(n):
+            while stk and nums[i] > nums[stk[-1]]:
+                pos = stk.pop()
+                result[pos] = nums[i]
+            stk.append(i)
+        
+        while stk:
+            print(stk)
+            pos = stk.pop()
+            result[pos] = -1
+            for i in range(n):
+                if nums[i] > nums[pos]:
+                    result[pos] = nums[i]
+                    break
+        
+        # return res
+        # return result
 # @lc code=end
 
